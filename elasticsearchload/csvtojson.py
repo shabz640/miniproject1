@@ -23,18 +23,6 @@ class csvtojson():
                         json_data.append({"Issue_Type": row[0], "Given_Name": row[1], "Expected_Name": row[2], "Result_Count": row[3], "Is_Place_Name": row[4], "Expected_Distance": row[5]})
                         csv_chunk = []
             return json_data
-'''    
-            for row in reader:
-                data.append(
-                    {"Issue_Type": row[0], "Given_Name": row[1], "Expected_Name": row[2], "Result_Count": row[3],
-                    "Is_Place_Name": row[4], "Expected_Distance": row[5]})
 
-        return data
-'''
-'''
-conv = csvtojson()
-res = conv.make_json(csvFile)
-print(res)
-'''
 
 
