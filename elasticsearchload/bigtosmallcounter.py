@@ -16,14 +16,14 @@ print(num_rows)
 
 json_data = conv.make_json(csvFile)
 
-finalout = []
+final_out = []
 i = 0
 for value in json_data:
     i = i + 1
-    finalout.append({'op_type': 'index', '_index': 'new-index1', '_type': '_doc', 'id': i, 'doc': value})
+    final_out.append({'op_type': 'index', '_index': 'new-index1', '_type': '_doc', 'id': i, 'doc': value})
     if (i % 100 == 0) or (i == num_rows - 1):
-        res = helpers.bulk(es, finalout)
-        finalout = []
+        res = helpers.bulk(es, final_out)
+        final_out = []
 
     else:
         pass

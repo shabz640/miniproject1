@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 import csv, json
 
-csvFile = r'/home/sravindr/Downloads/data.csv'
-
 class csvtojson():
     def __init__(self):
         pass
