@@ -1,10 +1,13 @@
 import unittest
+import big_to_smallcounter
 
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)
 
+class ElasticSearch(unittest.TestCase):
+    def test_validate(self):
+        self.assertEqual(big_to_smallcounter.index, 288)
 
 if __name__ == '__main__':
     unittest.main()
+
+

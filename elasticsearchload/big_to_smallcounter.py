@@ -32,10 +32,12 @@ def elastic_load(data, index):
 
     for chunk in json_data:
         index = index + 1
-        final_out.append({'op_type': 'index', '_index': 'new-index1', '_type': '_doc', 'id': index, 'doc': chunk})
+        final_out.append({'op_type': 'create', '_index': 'new-index1', '_type': '_doc', 'id': index, 'doc': chunk})
 
     res = helpers.bulk(es, final_out)
     print(index)
+
+
 
 
 idx = 0
@@ -45,6 +47,20 @@ with open(csv_file, "r") as f:
     for row in reader:
         temp.append(row)
         idx = idx + 1
-        if idx % chunk_size == 0 or idx == num_rows - 1:
+        if idx % chunk_size == 0:
             elastic_load(temp, idx)
             temp = []
+        elif idx == num_rows - 1:
+            elastic_load(temp, idx)
+            temp = []
+            index = idx
+
+print(index)
+
+'''
+def validate(id):
+    res = es.search(index='new-index1', body={"query": {"match": {"id": id}}})
+    for hit in res['hits']['hits']:
+        return hit["_source"]["doc"]["Expected_Name"]
+
+'''
