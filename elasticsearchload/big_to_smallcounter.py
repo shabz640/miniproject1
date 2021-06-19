@@ -58,8 +58,8 @@ with open(csv_file, "r") as f:
 print(index)
 
 '''
-def validate(id):
-    res = es.search(index='new-index1', body={"query": {"match": {"id": id}}})
+def validate(idx):
+    res = es.search(index='new-index1', body={"query": {"match": {"id": idx}}})
     for hit in res['hits']['hits']:
         return hit["_source"]["doc"]["Expected_Name"]
 
