@@ -1,23 +1,15 @@
 #!/usr/bin/python3
 from elasticsearch import Elasticsearch, helpers
-from csv_to_json import CsvToJson
-import csv
 
 es = Elasticsearch()
-conv = CsvToJson()
-
-csv_file = r'data.csv'
 
 num_rows = 0
 for row in open(csv_file):
     num_rows = num_rows + 1
 chunk_size = 100
 mod = num_rows % chunk_size
-
 temp = []
-
 index = 0
-
 
 def elastic_load(data, index):
     final_out = []
@@ -39,7 +31,7 @@ def elastic_load(data, index):
 
 
 
-
+'''
 idx = 0
 with open(csv_file, "r") as f:
     reader = csv.reader(f)
@@ -57,7 +49,7 @@ with open(csv_file, "r") as f:
 
 print(index)
 
-'''
+
 def validate(idx):
     res = es.search(index='new-index1', body={"query": {"match": {"id": idx}}})
     for hit in res['hits']['hits']:
